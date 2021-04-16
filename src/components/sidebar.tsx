@@ -1,6 +1,6 @@
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Text, Stack } from '@chakra-ui/react';
+import ActiveButton from 'components/activeButton';
 import { Menu } from 'config';
-import Link from 'next/link';
 import React from 'react';
 
 interface Props {
@@ -20,15 +20,20 @@ const App: React.FC<Props> = (props) => {
       w={`${props.w}px`}
       h="100%"
     >
-      {Menu.sidebar.map((item, index) => {
-        return (
-          <Link href={item.to} key={index}>
-            <Button w="100%" bg="white">
-              {item.name}
-            </Button>
-          </Link>
-        );
-      })}
+      <Stack spacing={4}>
+        {Menu.sidebar.map((row, i) => {
+          return (
+            <div key={i}>
+              <Text w="100%" bg="white" fontSize="xl" color="gray.700" variant="unstyled" textAlign="center">
+                {row.name}
+              </Text>
+              {row.children.map((item, j) => {
+                return <ActiveButton href={item.to} text={item.name} key={j} />;
+              })}
+            </div>
+          );
+        })}
+      </Stack>
     </Box>
   );
 };

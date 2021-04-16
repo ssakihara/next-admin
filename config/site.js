@@ -1,4 +1,4 @@
 export default {
   title: 'next-admin',
-  themeColor: 'cornflowerblue',
+  themeColor: 'green.500',
 };
