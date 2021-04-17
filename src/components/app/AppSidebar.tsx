@@ -1,5 +1,5 @@
 import { Box, Text, Stack } from '@chakra-ui/react';
-import ActiveButton from 'components/ActiveButton';
+import ActiveButton from 'components/app/AppActiveButton';
 import { Menu } from 'config';
 import React from 'react';
 
