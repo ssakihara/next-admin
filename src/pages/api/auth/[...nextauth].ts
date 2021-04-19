@@ -8,4 +8,9 @@ export default NextAuth({
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
+  callbacks: {
+    async redirect(url, baseUrl) {
+      return `${baseUrl}/dashboard`;
+    },
+  },
 });

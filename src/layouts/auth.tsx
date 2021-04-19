@@ -5,25 +5,17 @@ import Sidebar from 'components/app/AppSidebar';
 import { Site } from 'config';
 import { useSession } from 'next-auth/client';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const App: React.FC = (props) => {
-  const [session, loading] = useSession();
+  const [session] = useSession();
   const router = useRouter();
-
-  useEffect(() => {
-    //
-  }, [session]);
-
   const w = 200;
-
-  if (typeof window !== 'undefined' && loading) return null;
 
   if (Site.publicPages.includes(router.pathname)) {
     return (
       <>
         <Header></Header>
-        {props.children}
       </>
     );
   }

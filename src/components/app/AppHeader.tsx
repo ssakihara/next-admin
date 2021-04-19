@@ -8,8 +8,10 @@ const App: React.FC = () => {
   const [session] = useSession();
   return (
     <Box bg={Site.themeColor} w="100%" p={4} color="white">
-      <Flex>
-        <Link href="/">{Site.title}</Link>
+      <Flex align="center">
+        <Link href="/">
+          {Site.title}
+        </Link>
         <Spacer />
         {!session ? (
           <Button variant="unstyled" onClick={() => signIn()}>
