@@ -16,6 +16,7 @@ const App: React.FC = (props) => {
     return (
       <>
         <Header></Header>
+        {props.children}
       </>
     );
   }
