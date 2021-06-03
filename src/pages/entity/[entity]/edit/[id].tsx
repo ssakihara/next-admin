@@ -1,21 +1,11 @@
 import fs from 'fs';
-import path from 'path';
 import { Container } from '@chakra-ui/react';
 import Select from 'components/field/FieldSelect';
 import Switch from 'components/field/FieldSwitch';
 import Text from 'components/field/FieldText';
-import globby from 'globby';
 import React from 'react';
 
-export async function getStaticPaths() {
-  const files = await globby(`${process.cwd()}/config/entity/*.json`);
-  const paths = files.map((file) => {
-    return `/entity/${path.basename(file, '.json')}`;
-  });
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const entity = JSON.parse(fs.readFileSync(`${process.cwd()}/config/entity/${params.entity}.json`, 'utf8'));
   return { props: { entity } };
 }
@@ -44,11 +34,9 @@ const Fields: React.FC<Props> = (props) => {
 
 const App: React.FC<Props> = (props) => {
   return (
-    <>
-      <Container mt={3}>
-        <Fields entity={props.entity}></Fields>
-      </Container>
-    </>
+    <Container mt={3}>
+      <Fields entity={props.entity}></Fields>
+    </Container>
   );
 };
 

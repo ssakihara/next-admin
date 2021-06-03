@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "dev": "next dev",
+    "dev": "next dev -p 4000",
     "build": "next build",
     "start": "next start",
     "lint": "eslint {src,config} --fix --ext .js,.ts,.tsx ",
@@ -20,7 +20,8 @@
     "next": "10.0.9",
     "next-auth": "^3.14.8",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "recoil": "^0.3.1"
   },
   "devDependencies": {
     "@types/next-auth": "^3.13.0",

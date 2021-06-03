@@ -1,0 +1,6 @@
+{
+  "data": [
+    { "title": "タイトル", "category": "カテゴリ", "isPublish": true },
+    { "title": "タイトル2", "category": "カテゴリ2", "isPublish": true }
+  ]
+}
