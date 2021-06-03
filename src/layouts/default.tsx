@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/layout';
-import Header from 'components/Header';
-import Sidebar from 'components/Sidebar';
+import Header from 'components/app/AppHeader';
+import Sidebar from 'components/app/AppSidebar';
 import React from 'react';
 
 const App: React.FC = (props) => {

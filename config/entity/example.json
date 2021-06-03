@@ -1,0 +1,32 @@
+{
+  "fields": [
+    {
+      "name": "title",
+      "label": "タイトル",
+      "type": "text",
+      "option": {}
+    },
+    {
+      "name": "category",
+      "label": "カテゴリ",
+      "type": "select",
+      "option": {
+        "default": "category",
+        "items": {
+          "category": "category",
+          "category1": "category1"
+        }
+      }
+    },
+    {
+      "name": "isPublish",
+      "label": "公開状態",
+      "type": "switch",
+      "option": {
+        "default": true,
+        "true": "公開中",
+        "false": "非公開"
+      }
+    }
+  ]
+}

@@ -9,9 +9,7 @@ const App: React.FC = () => {
   return (
     <Box bg={Site.themeColor} w="100%" p={4} color="white">
       <Flex align="center">
-        <Link href="/">
-          {Site.title}
-        </Link>
+        <Link href="/">{Site.title}</Link>
         <Spacer />
         {!session ? (
           <Button variant="unstyled" onClick={() => signIn()}>

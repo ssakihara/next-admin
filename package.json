@@ -7,9 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "npm-run-all -p lint:*",
-    "lint:eslint": "eslint {src,config} --fix --ext .js,.ts,.tsx ",
-    "lint:prettier": "prettier --write '{src,config}/**/*.{ts,tsx,js,jsx,json,md}'"
+    "lint": "eslint {src,config} --fix --ext .js,.ts,.tsx ",
+    "fmt": "prettier --write '{src,config}/**/*.{ts,tsx,js,jsx,json,md}'"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.5.0",
@@ -17,11 +16,11 @@
     "@emotion/styled": "^11.3.0",
     "axios": "^0.21.1",
     "framer-motion": "^4.1.3",
+    "globby": "^11.0.3",
     "next": "10.0.9",
     "next-auth": "^3.14.8",
     "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "recoil": "^0.2.0"
+    "react-dom": "17.0.1"
   },
   "devDependencies": {
     "@types/next-auth": "^3.13.0",
@@ -40,7 +39,6 @@
     "eslint-plugin-unused-imports": "^1.1.0",
     "husky": "^5.1.3",
     "lint-staged": "^10.5.4",
-    "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "typescript": "^4.2.3"
   },
