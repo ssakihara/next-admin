@@ -1,4 +1,5 @@
 {
+  "list": [],
   "fields": [
     {
       "name": "title",
@@ -11,10 +12,10 @@
       "label": "カテゴリ",
       "type": "select",
       "option": {
-        "default": "category",
+        "default": "category2",
         "items": {
-          "category": "category",
-          "category1": "category1"
+          "category1": "categoryA",
+          "category2": "categoryB"
         }
       }
     },
