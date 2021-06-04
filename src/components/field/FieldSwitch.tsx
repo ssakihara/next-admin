@@ -1,5 +1,5 @@
 import { Switch, FormControl, FormLabel, Container, Text } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRecoilState } from 'recoil';
 import { entityState } from 'store/entity'
 
@@ -14,25 +14,19 @@ interface Props {
 }
 
 const App: React.FC<Props> = (props) => {
-  const [entity, setEntity] = useRecoilState(entityState(props.name))
-
-  useEffect(() => {
-    if (entity === undefined) {
-      setEntity(props.option.default)
-    }
-  }, [])
+  const [value, setValue] = useRecoilState(entityState(props.name))
 
   const toggle = () => {
-    setEntity(!entity)
+    setValue(!value)
   }
-  const label = entity ? props.option.true : props.option.false
+  const label = value ? props.option.true : props.option.false
   return (
     <Container p={3}>
       <FormControl display="flex" alignItems="center">
         <FormLabel htmlFor={props.name} mb="0">
           {props.label}
         </FormLabel>
-        <Switch isChecked={entity} id={props.name} onChange={toggle} mr={3} />
+        <Switch isChecked={value} id={props.name} onChange={toggle} mr={3} />
         <Text>{label}</Text>
       </FormControl>
     </Container>

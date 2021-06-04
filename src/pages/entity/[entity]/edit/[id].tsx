@@ -1,22 +1,26 @@
 import fs from 'fs';
 import { Button, Container } from '@chakra-ui/react';
+import axios from 'axios'
 import Select from 'components/field/FieldSelect';
 import Switch from 'components/field/FieldSwitch';
 import Text from 'components/field/FieldText';
-import React from 'react';
-import { useRecoilValue } from 'recoil';
+import React, { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import { entityState } from 'store/entity'
 
 export async function getServerSideProps({ params }) {
+  const id = params.id
+  const endpoint = params.entity
   const entity = JSON.parse(fs.readFileSync(`${process.cwd()}/config/entity/${params.entity}.json`, 'utf8'));
-  return { props: { entity } };
+  return { props: { endpoint, entity, id } };
 }
 
-interface Props {
+
+interface FieldProps {
   entity: any;
 }
 
-const Fields: React.FC<Props> = (props) => {
+const Fields: React.FC<FieldProps> = (props) => {
   return props.entity.fields.map((field, i) => {
     switch (field.type) {
       case 'text':
@@ -34,13 +38,35 @@ const Fields: React.FC<Props> = (props) => {
   });
 };
 
+interface Props {
+  id: string,
+  endpoint: string,
+  entity: any;
+}
+
 const App: React.FC<Props> = (props) => {
-  let entity = {}
+  // Stateの初期化
+  let entity = {};
+  let setters = {};
   props.entity.fields.map(field => {
-    const v = useRecoilValue(entityState(field.name));
-    entity = Object.assign(entity, { [field.name]: v })
+    const [value, setValue] = useRecoilState(entityState(field.name));
+    entity = Object.assign(entity, { [field.name]: value })
+    setters = Object.assign(setters, { [field.name]: setValue })
     return null
   })
+
+  let response
+  useEffect(() => {
+    const fetchData = async () => {
+      response = await axios.get(`/api/entity/${props.endpoint}/${props.id}`)
+      props.entity.fields.map(field => {
+        setters[field.name](response.data.data[field.name] ?? field.option.default)
+        return null
+      })
+    }
+
+    fetchData()
+  }, [props.id])
 
   const save = () => {
     console.log(entity);

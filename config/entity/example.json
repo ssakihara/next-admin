@@ -14,8 +14,10 @@
       "option": {
         "default": "category2",
         "items": {
-          "category1": "categoryA",
-          "category2": "categoryB"
+          "category1": "カテゴリA",
+          "category2": "カテゴリB",
+          "category3": "カテゴリC",
+          "category4": "カテゴリD"
         }
       }
     },
