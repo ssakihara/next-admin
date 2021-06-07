@@ -23,6 +23,12 @@
       }
     },
     {
+      "name": "date",
+      "label": "公開日",
+      "type": "datetime",
+      "option": {}
+    },
+    {
       "name": "isPublish",
       "label": "公開状態",
       "type": "switch",

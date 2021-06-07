@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { Heading, Button, Container } from '@chakra-ui/react';
 import axios from 'axios'
+import Datetime from 'components/field/FieldDatetime';
 import Editor from 'components/field/FieldEditor';
 import Select from 'components/field/FieldSelect';
 import Switch from 'components/field/FieldSwitch';
@@ -36,6 +37,9 @@ const Fields: React.FC<FieldProps> = (props) => {
 
       case 'editor':
         return <Editor key={i} name={field.name} label={field.label} option={field.option}></Editor>;
+
+      case 'datetime':
+        return <Datetime key={i} name={field.name} label={field.label} option={field.option}></Datetime>;
 
       default:
         return <>Field is not found</>;
