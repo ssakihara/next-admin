@@ -1,41 +1,32 @@
-import { Box, Text, Stack } from '@chakra-ui/react';
-import ActiveButton from 'components/app/AppActiveButton';
+import { Box, Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel } from '@chakra-ui/react';
 import { Menu } from 'config';
+import Link from 'next/link';
 import React from 'react';
 
-interface Props {
-  w: number;
-}
-
-const App: React.FC<Props> = (props) => {
+const App: React.FC = () => {
   return (
-    <Box
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      position="fixed"
-      top={0}
-      left={0}
-      pt={12}
-      w={`${props.w}px`}
-      h="100%"
-    >
-      <Stack spacing={4}>
+    <Box w='200px'>
+      <Accordion allowMultiple>
         {Menu.sidebar.map((row, i) => {
           return (
-            <div key={i}>
-              <Text w="100%" bg="white" fontSize="xl" color="gray.700" variant="unstyled" textAlign="center">
+            <AccordionItem key={i}>
+              <AccordionButton fontSize='large'>
                 {row.name}
-              </Text>
+                <AccordionIcon />
+              </AccordionButton>
               {row.children.map((item, j) => {
-                return <ActiveButton href={item.to} text={item.name} key={j} />;
+                return <AccordionPanel key={j}>
+                  <Link href={item.to}>
+                    {item.name}
+                  </Link>
+                </AccordionPanel>;
               })}
-            </div>
-          );
+            </AccordionItem>)
         })}
-      </Stack>
-    </Box>
+      </Accordion >
+    </Box >
   );
 };
 
 export default App;
+

@@ -11,6 +11,7 @@
     "fmt": "prettier --write '{src,config}/**/*.{ts,tsx,js,jsx,json,md}'"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.13",
     "@chakra-ui/react": "^1.5.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.3.0",

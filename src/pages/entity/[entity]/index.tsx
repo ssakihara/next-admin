@@ -63,7 +63,7 @@ const App: React.FC<Props> = (props) => {
   }
 
   return <Container>
-    <Heading py={3}>{props.entity.title}</Heading>
+    <Heading pb={3}>{props.entity.title}</Heading>
     <Table variant="simple">
       <Thead>
         <Tr>
