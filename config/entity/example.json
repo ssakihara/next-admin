@@ -1,4 +1,5 @@
 {
+  "title": "Example",
   "list": ["title", "category", "isPublish"],
   "fields": [
     {
@@ -29,6 +30,14 @@
         "default": true,
         "true": "公開中",
         "false": "非公開"
+      }
+    },
+    {
+      "name": "editor",
+      "label": "本文",
+      "type": "editor",
+      "option": {
+        "default": "**Hello world default**"
       }
     }
   ]

@@ -1,9 +1,11 @@
 import fs from 'fs';
-import { Button, Container } from '@chakra-ui/react';
+import { Heading, Button, Container } from '@chakra-ui/react';
 import axios from 'axios'
+import Editor from 'components/field/FieldEditor';
 import Select from 'components/field/FieldSelect';
 import Switch from 'components/field/FieldSwitch';
 import Text from 'components/field/FieldText';
+import { Site } from 'config';
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { entityState } from 'store/entity'
@@ -31,6 +33,9 @@ const Fields: React.FC<FieldProps> = (props) => {
 
       case 'switch':
         return <Switch key={i} name={field.name} label={field.label} option={field.option}></Switch>;
+
+      case 'editor':
+        return <Editor key={i} name={field.name} label={field.label} option={field.option}></Editor>;
 
       default:
         return <>Field is not found</>;
@@ -74,9 +79,10 @@ const App: React.FC<Props> = (props) => {
 
   return (
     <Container mt={3}>
+      <Heading py={3}>{props.entity.title}</Heading>
       <Fields entity={props.entity}></Fields>
       <Container p={3}>
-        <Button colorScheme="blue" onClick={save}>保存</Button>
+        <Button colorScheme={Site.colorScheme} onClick={save}>保存</Button>
       </Container>
     </Container>
   );

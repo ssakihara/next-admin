@@ -1,4 +1,5 @@
-import { Switch, FormControl, FormLabel, Container, Text } from '@chakra-ui/react';
+import { Switch, FormControl, FormLabel, Container, Text, Heading } from '@chakra-ui/react';
+import { Site } from 'config';
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import { entityState } from 'store/entity'
@@ -24,9 +25,9 @@ const App: React.FC<Props> = (props) => {
     <Container p={3}>
       <FormControl display="flex" alignItems="center">
         <FormLabel htmlFor={props.name} mb="0">
-          {props.label}
+          <Heading size="sm">{props.label}</Heading>
         </FormLabel>
-        <Switch isChecked={value} id={props.name} onChange={toggle} mr={3} />
+        <Switch isChecked={value} id={props.name} onChange={toggle} mr={3} colorScheme={Site.colorScheme} />
         <Text>{label}</Text>
       </FormControl>
     </Container>

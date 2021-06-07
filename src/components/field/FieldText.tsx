@@ -1,4 +1,4 @@
-import { Input, Text, Container } from '@chakra-ui/react';
+import { Input, Heading, Container } from '@chakra-ui/react';
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import { entityState } from 'store/entity'
@@ -14,7 +14,7 @@ const App: React.FC<Props> = (props) => {
 
   return (
     <Container p={3}>
-      <Text mb={3}>{props.label}</Text>
+      <Heading size="sm" mb={3}>{props.label}</Heading>
       <Input value={value ?? ''} onChange={e => setValue(e.target.value)}></Input>
     </Container>
   );

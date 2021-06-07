@@ -1,7 +1,7 @@
 {
   "data": [
-    { "id": "1", "title": "タイトル1", "category": "category1", "isPublish": true },
-    { "id": "2", "title": "タイトル2", "category": "category2", "isPublish": false },
-    { "id": "3", "title": "タイトル3", "isPublish": true }
+    { "id": "1", "title": "タイトル1", "category": "category1", "isPublish": true, "editor": "**Hello world!**" },
+    { "id": "2", "title": "タイトル2", "category": "category2", "isPublish": false, "editor": "**Hello world!!**" },
+    { "id": "3", "title": "タイトル3", "isPublish": true, "editor": "**Hello world!!!**" }
   ]
 }

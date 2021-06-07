@@ -1,5 +1,7 @@
 import fs from 'fs';
 import {
+  Button,
+  Heading,
   Table,
   Thead,
   Tbody,
@@ -9,6 +11,8 @@ import {
   Container
 } from "@chakra-ui/react"
 import axios from 'axios'
+import LinkButton from 'components/app/AppLinkButton'
+import { Site } from 'config';
 import React, { useEffect } from 'react';
 
 export async function getServerSideProps({ params }) {
@@ -33,7 +37,13 @@ const App: React.FC<Props> = (props) => {
     }
     fetchData()
   }, [])
+
+  const removeItem = () => {
+    window.alert('Delete')
+  }
+
   return <Container>
+    <Heading py={3}>{props.entity.title}</Heading>
     <Table variant="simple">
       <Thead>
         <Tr>
@@ -41,6 +51,7 @@ const App: React.FC<Props> = (props) => {
             const field = props.entity.fields.find(field => field.name === key)
             return <Th key={i}>{field.name}</Th>
           })}
+          <Th>操作</Th>
         </Tr>
       </Thead>
       <Tbody>
@@ -51,6 +62,10 @@ const App: React.FC<Props> = (props) => {
                 const result = item[key] ?? ''
                 return (<Td key={key}>{result.toString()}</Td>)
               })}
+              <Td>
+                <LinkButton colorScheme={Site.colorScheme} text='編集' href={`/entity/${props.endpoint}/edit/${item.id}`}></LinkButton>
+                <Button colorScheme='red' ml={3} onClick={removeItem} index={item.id}>削除</Button>
+              </Td>
             </Tr>
           )
         })}

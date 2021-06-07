@@ -1,25 +1,17 @@
 import { Button } from '@chakra-ui/react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react';
 
 interface Props {
   href: string;
   text: string;
+  colorScheme: string;
 }
 
 const App: React.FC<Props> = (props) => {
-  const router = useRouter();
   return (
     <Link href={props.href}>
-      <Button
-        w="100%"
-        _active={{ background: 'gray.50' }}
-        bg="white"
-        color="gray.700"
-        size="md"
-        isActive={router.asPath === props.href}
-      >
+      <Button colorScheme={props.colorScheme}>
         {props.text}
       </Button>
     </Link>
