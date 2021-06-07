@@ -23,7 +23,7 @@ const App: React.FC<Props> = (props) => {
       <DatePicker selected={value}
         onChange={(date) => setValue(date)}
         timeInputLabel="Time:"
-        dateFormat="MM/dd/yyyy h:mm aa"
+        dateFormat="yyyy/MM/dd H:mm"
         showTimeInput customInput={<Input />} />
     </Container>
   );
