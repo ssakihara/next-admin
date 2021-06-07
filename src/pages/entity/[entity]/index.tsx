@@ -6,7 +6,6 @@ import {
   Tr,
   Th,
   Td,
-  TableCaption,
   Container
 } from "@chakra-ui/react"
 import axios from 'axios'
@@ -36,10 +35,10 @@ const App: React.FC<Props> = (props) => {
   }, [])
   return <Container>
     <Table variant="simple">
-      <TableCaption>{props.endpoint}</TableCaption>
       <Thead>
         <Tr>
-          {props.entity.fields.map((field, i) => {
+          {props.entity.list.map((key, i) => {
+            const field = props.entity.fields.find(field => field.name === key)
             return <Th key={i}>{field.name}</Th>
           })}
         </Tr>
@@ -48,9 +47,10 @@ const App: React.FC<Props> = (props) => {
         {data.map((item, j) => {
           return (
             <Tr key={j}>
-              <Td>{item.title}</Td>
-              <Td>{item.category}</Td>
-              <Td>{item.isPublish.toString()}</Td>
+              {props.entity.list.map(key => {
+                const result = item[key] ?? ''
+                return (<Td key={key}>{result.toString()}</Td>)
+              })}
             </Tr>
           )
         })}
