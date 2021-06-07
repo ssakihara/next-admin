@@ -21,6 +21,26 @@ export async function getServerSideProps({ params }) {
   return { props: { endpoint, entity } };
 }
 
+interface FieldProps {
+  field: any
+  text: string
+}
+
+const Field: React.FC<FieldProps> = (props) => {
+  let text = props.text
+  switch (props.field.type) {
+    case 'select':
+      return <Td>{props.field.option.items[text]}</Td>
+
+    case 'switch':
+      text = props.text.toString()
+      return <Td>{props.field.option[text]}</Td>
+
+    default:
+      return <Td>{text}</Td>
+  }
+};
+
 interface Props {
   endpoint: string,
   entity: any
@@ -36,7 +56,7 @@ const App: React.FC<Props> = (props) => {
       setData(response.data.data)
     }
     fetchData()
-  }, [])
+  }, [props.endpoint])
 
   const removeItem = () => {
     window.alert('Delete')
@@ -49,7 +69,7 @@ const App: React.FC<Props> = (props) => {
         <Tr>
           {props.entity.list.map((key, i) => {
             const field = props.entity.fields.find(field => field.name === key)
-            return <Th key={i}>{field.name}</Th>
+            return <Th key={i}>{field.label}</Th>
           })}
           <Th>操作</Th>
         </Tr>
@@ -59,8 +79,9 @@ const App: React.FC<Props> = (props) => {
           return (
             <Tr key={j}>
               {props.entity.list.map(key => {
-                const result = item[key] ?? ''
-                return (<Td key={key}>{result.toString()}</Td>)
+                const field = props.entity.fields.find(field => field.name === key)
+                const text = item[key] ?? ''
+                return (<Field key={key} field={field} text={text}></Field>)
               })}
               <Td>
                 <LinkButton colorScheme={Site.colorScheme} text='編集' href={`/entity/${props.endpoint}/edit/${item.id}`}></LinkButton>

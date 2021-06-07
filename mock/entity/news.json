@@ -1,0 +1,7 @@
+{
+  "data": [
+    { "id": "1", "title": "ニュース1", "category": "category1", "isPublish": true, "editor": "**Hello world!**" },
+    { "id": "2", "title": "ニュース2", "category": "category2", "isPublish": false, "editor": "**Hello world!!**" },
+    { "id": "3", "title": "ニュース3", "isPublish": true, "editor": "**Hello world!!!**" }
+  ]
+}

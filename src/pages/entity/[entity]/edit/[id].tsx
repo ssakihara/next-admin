@@ -19,11 +19,11 @@ export async function getServerSideProps({ params }) {
 
 
 interface FieldProps {
-  entity: any;
+  fields: any;
 }
 
 const Fields: React.FC<FieldProps> = (props) => {
-  return props.entity.fields.map((field, i) => {
+  return props.fields.map((field, i) => {
     switch (field.type) {
       case 'text':
         return <Text key={i} name={field.name} label={field.label} option={field.option}></Text>;
@@ -80,7 +80,7 @@ const App: React.FC<Props> = (props) => {
   return (
     <Container mt={3}>
       <Heading py={3}>{props.entity.title}</Heading>
-      <Fields entity={props.entity}></Fields>
+      <Fields fields={props.entity.fields}></Fields>
       <Container p={3}>
         <Button colorScheme={Site.colorScheme} onClick={save}>保存</Button>
       </Container>
