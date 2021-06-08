@@ -1,33 +1,24 @@
-import { Modal, Spinner, ModalOverlay, Text } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
-import { atom, useRecoilState } from 'recoil';
+import { Modal, Spinner, ModalOverlay, Box } from '@chakra-ui/react';
+import React from 'react';
+import { useRecoilState } from 'recoil';
+import { nowLoadingState } from 'store/app'
 
-
-const state = atom({
-  key: 'app/nowLoading',
-  default: true
-})
 const App: React.FC = () => {
-  const [value, setValue] = useRecoilState(state)
+  const [value, setValue] = useRecoilState(nowLoadingState)
   const onClose = () => {
     setValue(!value)
   }
-  useEffect(() => {
-    setTimeout(() => {
-      setValue(!value)
-    }, 2000);
-  }, [])
   return (
     <Modal closeOnOverlayClick={false} isOpen={value} onClose={onClose} >
       <ModalOverlay />
-      <Text align="center">
+      <Box align="center">
         <Spinner
           thickness="4px"
           speed="0.65s"
           emptyColor="gray.200"
           color="blue.500"
           size="xl"
-        /></Text>
+        /></Box>
     </Modal >
   );
 };

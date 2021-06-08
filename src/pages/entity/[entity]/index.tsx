@@ -14,6 +14,8 @@ import axios from 'axios'
 import LinkButton from 'components/app/AppLinkButton'
 import { Site } from 'config';
 import React, { useEffect } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { nowLoadingState } from 'store/app'
 
 export async function getServerSideProps({ params }) {
   const endpoint = params.entity
@@ -47,13 +49,16 @@ interface Props {
 }
 
 const App: React.FC<Props> = (props) => {
+  const setNowLoading = useSetRecoilState(nowLoadingState)
 
   const [data, setData] = React.useState([]);
 
   useEffect(() => {
+    setNowLoading(true)
     const fetchData = async () => {
       const response = await axios.get(`/api/entity/${props.endpoint}`)
       setData(response.data.data)
+      setNowLoading(false)
     }
     fetchData()
   }, [props.endpoint])
