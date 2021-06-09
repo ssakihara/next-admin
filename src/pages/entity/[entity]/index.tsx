@@ -3,8 +3,9 @@ import axios from 'axios';
 import LinkButton from 'components/app/AppLinkButton';
 import getConfig from 'next/config';
 import React, { useEffect } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { nowLoadingState } from 'store/app';
+import { listState } from 'store/entity';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -41,7 +42,7 @@ const App: React.FC<Props> = (props) => {
   const entity = publicRuntimeConfig.entity[props.endpoint];
   const setNowLoading = useSetRecoilState(nowLoadingState);
 
-  const [data, setData] = React.useState([]);
+  const [data, setData] = useRecoilState(listState)
 
   useEffect(() => {
     setNowLoading(true);
