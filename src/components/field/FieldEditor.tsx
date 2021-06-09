@@ -1,13 +1,13 @@
 import { Heading, Container } from '@chakra-ui/react';
 import MDEditor from '@uiw/react-md-editor';
-import '@uiw/react-md-editor/dist/markdown-editor.css'
+import '@uiw/react-md-editor/dist/markdown-editor.css';
 import '@uiw/react-markdown-preview/dist/markdown.css';
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import { entityState } from 'store/entity'
+import { entityState } from 'store/entity';
 
 interface Props {
-  name: string,
+  name: string;
   label: string;
   option: {
     default: string;
@@ -16,11 +16,13 @@ interface Props {
 }
 
 const App: React.FC<Props> = (props) => {
-  const [value, setValue] = useRecoilState(entityState(props.name))
+  const [value, setValue] = useRecoilState(entityState(props.name));
   return (
     <Container p={3}>
-      <Heading size="sm" mb={3}>{props.label}</Heading>
-      <MDEditor value={value} onChange={setValue} />
+      <Heading size="sm" mb={3}>
+        {props.label}
+      </Heading>
+      <MDEditor value={value} height={500} onChange={setValue} />
     </Container>
   );
 };

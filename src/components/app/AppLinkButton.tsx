@@ -11,9 +11,7 @@ interface Props {
 const App: React.FC<Props> = (props) => {
   return (
     <Link href={props.href}>
-      <Button colorScheme={props.colorScheme}>
-        {props.text}
-      </Button>
+      <Button colorScheme={props.colorScheme}>{props.text}</Button>
     </Link>
   );
 };
