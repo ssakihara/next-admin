@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import Layout from 'layouts/default';
+import Layout from 'layouts/auth';
 import { AppProps } from 'next/app';
 import React from 'react';
 import { RecoilRoot } from 'recoil';

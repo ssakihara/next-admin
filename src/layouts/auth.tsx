@@ -10,7 +10,7 @@ import React from 'react';
 const { publicRuntimeConfig } = getConfig();
 
 const App: React.FC = (props) => {
-  const t = true
+  const t = true;
   const router = useRouter();
 
   if (publicRuntimeConfig.app.publicPages.includes(router.pathname)) {

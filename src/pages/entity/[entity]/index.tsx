@@ -42,7 +42,7 @@ const App: React.FC<Props> = (props) => {
   const entity = publicRuntimeConfig.entity[props.endpoint];
   const setNowLoading = useSetRecoilState(nowLoadingState);
 
-  const [data, setData] = useRecoilState(listState)
+  const [data, setData] = useRecoilState(listState);
 
   useEffect(() => {
     setNowLoading(true);

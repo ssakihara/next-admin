@@ -6,18 +6,18 @@ import React from 'react';
 const { publicRuntimeConfig } = getConfig();
 
 const App: React.FC = () => {
-  const signIn = () => {
+  const login = () => {
     //
-  }
+  };
 
   return (
     <Box bg={publicRuntimeConfig.app.themeColor} w="100%" p={4} color="white">
       <Flex align="center">
         <Link href="/">{publicRuntimeConfig.app.title}</Link>
         <Spacer />
-        <Button variant="unstyled" onClick={() => signIn()}>
-          Sign in
-          </Button>
+        <Button variant="unstyled" onClick={() => login()}>
+          Login
+        </Button>
       </Flex>
     </Box>
   );
