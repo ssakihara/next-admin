@@ -16,7 +16,7 @@ const App: React.FC = () => {
         <Link href="/">{publicRuntimeConfig.app.title}</Link>
         <Spacer />
         <Button variant="unstyled" onClick={() => login()}>
-          Login
+          ログイン
         </Button>
       </Flex>
     </Box>
