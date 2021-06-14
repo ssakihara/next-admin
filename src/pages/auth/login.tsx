@@ -1,12 +1,14 @@
 import { Button, Container, Flex, Heading, Input } from '@chakra-ui/react';
+import firebase from 'firebase/app';
 import getConfig from 'next/config';
 import React from 'react';
 
 const { publicRuntimeConfig } = getConfig();
 
 const App: React.FC = () => {
-  const login = () => {
-    //
+  const login = async () => {
+    const user = await firebase.auth().signInWithEmailAndPassword('', '').catch();
+    console.log(user);
   };
 
   return (
