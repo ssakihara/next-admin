@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: notify slack job start
-        uses: 8398a7/action-slack@v3.8.0
+        uses: 8398a7/action-slack@v3
         with:
           status: custom
           fields: author
@@ -25,7 +25,7 @@ jobs:
           {
             attachments: [{
               color: 'good',
-              text: `デプロイに成功しました。by ${process.env.AS_AUTHOR}`
+              text: `デプロイを開始しました。by ${process.env.AS_AUTHOR}`
             }]
           }
         env:
@@ -63,7 +63,7 @@ jobs:
             --quiet
 
       - name: notify slack job end
-        uses: 8398a7/action-slack@v3.8.0
+        uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
           custom_payload: |
