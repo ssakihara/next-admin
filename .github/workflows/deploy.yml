@@ -22,12 +22,12 @@ jobs:
           status: custom
           fields: author
           custom_payload: |
-          {
-            attachments: [{
-              color: 'good',
-              text: `デプロイを開始しました。by ${process.env.AS_AUTHOR}`
-            }]
-          }
+            {
+              attachments: [{
+                color: 'good',
+                text: `デプロイを開始しました。by ${process.env.AS_AUTHOR}`
+              }]
+            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
@@ -67,12 +67,12 @@ jobs:
         with:
           status: ${{ job.status }}
           custom_payload: |
-          {
-            attachments: [{
-              color: '${{ job.status }}' === 'success' ? 'good' : 'danger',
-              text: '${{ job.status }}' === 'success' ? 'デプロイに成功しました。' : 'デプロイに失敗しました。'
-            }]
-          }
+            {
+              attachments: [{
+                color: '${{ job.status }}' === 'success' ? 'good' : 'danger',
+                text: '${{ job.status }}' === 'success' ? 'デプロイに成功しました。' : 'デプロイに失敗しました。'
+              }]
+            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         if: always()
