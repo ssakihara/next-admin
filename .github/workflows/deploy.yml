@@ -16,6 +16,21 @@ jobs:
   deploy-to-cloud-run:
     runs-on: ubuntu-latest
     steps:
+      - name: notify slack job start
+        uses: 8398a7/action-slack@v3.8.0
+        with:
+          status: custom
+          fields: author
+          custom_payload: |
+          {
+            attachments: [{
+              color: 'good',
+              text: `デプロイに成功しました。by ${process.env.AS_AUTHOR}`
+            }]
+          }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
       - name: Checkout the repository
         uses: actions/checkout@v2
 
@@ -46,3 +61,18 @@ jobs:
             --platform=managed \
             --allow-unauthenticated \
             --quiet
+
+      - name: notify slack job end
+        uses: 8398a7/action-slack@v3.8.0
+        with:
+          status: ${{ job.status }}
+          custom_payload: |
+          {
+            attachments: [{
+              color: '${{ job.status }}' === 'success' ? 'good' : 'danger',
+              text: '${{ job.status }}' === 'success' ? 'デプロイに成功しました。' : 'デプロイに失敗しました。'
+            }]
+          }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()
